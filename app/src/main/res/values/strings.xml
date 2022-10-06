@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">wings</string>
+    <string name="login">Login</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
+    <string name="register">register</string>
+    <string name="register2">Register</string>
+    <string name="checkout">checkout</string>
+</resources>

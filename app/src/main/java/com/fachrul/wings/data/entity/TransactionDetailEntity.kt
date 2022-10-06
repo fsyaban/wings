@@ -1,0 +1,28 @@
+package com.fachrul.wings.data.entity
+
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+import java.util.*
+
+@Entity(tableName = "transaction_detail")
+data class TransactionDetailEntity(
+    @PrimaryKey
+    @field:ColumnInfo(name = "document_code")
+    val documentCode: String,
+    @field:ColumnInfo(name = "document_number")
+    val productName: String,
+    @field:ColumnInfo(name = "product_code")
+    val productCode: String,
+    @field:ColumnInfo(name = "price")
+    val price:Double,
+    @field:ColumnInfo(name = "quantity")
+    val quantity:Double,
+    @field:ColumnInfo(name = "unit")
+    val unit:String,
+    @field:ColumnInfo(name = "sub_total")
+    val subTotal:Double,
+    @field:ColumnInfo(name = "currency")
+    val currency:String
+
+)
