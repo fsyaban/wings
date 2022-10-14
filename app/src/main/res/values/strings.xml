@@ -7,4 +7,6 @@
     <string name="register">register</string>
     <string name="register2">Register</string>
     <string name="checkout">checkout</string>
+    <string name="date">14 Okt 2022</string>
+    <string name="total_rp">Total : Rp.</string>
 </resources>

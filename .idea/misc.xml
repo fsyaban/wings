@@ -4,13 +4,19 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/drawable/ic_launcher_background.xml" value="0.164" />
+        <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/activity_login.xml" value="0.10885416666666667" />
         <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
-        <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/checkout_item.xml" value="0.22826086956521738" />
+        <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/checkout_item.xml" value="0.264" />
         <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/fragment_checkout.xml" value="0.22826086956521738" />
         <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/fragment_detail.xml" value="0.22826086956521738" />
         <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/fragment_login.xml" value="0.22826086956521738" />
+        <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/fragment_order.xml" value="0.24895833333333334" />
+        <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/fragment_order_detail.xml" value="0.24895833333333334" />
         <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/fragment_product.xml" value="0.22826086956521738" />
         <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/fragment_register.xml" value="0.22826086956521738" />
+        <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/login_loading.xml" value="0.24895833333333334" />
+        <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/order_detail_item.xml" value="0.24895833333333334" />
+        <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/order_item.xml" value="0.24895833333333334" />
         <entry key="..\:/BOOTCAMP/Kotlin/wings/app/src/main/res/layout/product_item.xml" value="0.22826086956521738" />
       </map>
     </option>

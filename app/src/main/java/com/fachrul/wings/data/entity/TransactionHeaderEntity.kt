@@ -12,7 +12,7 @@ data class TransactionHeaderEntity(
     @field:ColumnInfo(name = "document_code")
     val documentCode: String,
     @field:ColumnInfo(name = "document_number")
-    val productName: String,
+    val documentNumber: String,
     @field:ColumnInfo(name = "user")
     val user: String,
     @field:ColumnInfo(name = "total")

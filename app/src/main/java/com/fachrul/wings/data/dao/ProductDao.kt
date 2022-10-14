@@ -13,7 +13,12 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertProduct(product:ProductEntity)
 
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    fun insertAllProduct(products:List<ProductEntity>)
+
     @Query("SELECT * from product")
     fun getAllProduct(): LiveData<List<ProductEntity>>
 
+    @Query("SELECT * FROM product WHERE product_code =:productCode ")
+    fun getProductByProductCode(productCode:String):LiveData<ProductEntity>
 }

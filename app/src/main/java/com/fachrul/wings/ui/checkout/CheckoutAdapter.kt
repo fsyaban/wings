@@ -1,47 +1,72 @@
 package com.fachrul.wings.ui.checkout
 
 import android.annotation.SuppressLint
-import android.text.TextWatcher
+import android.text.Editable
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.fachrul.wings.data.entity.relational.KeranjangProduct
 import com.fachrul.wings.data.entity.ProductEntity
+import com.fachrul.wings.data.helper.Const
 import com.fachrul.wings.databinding.CheckoutItemBinding
 
-class CheckoutAdapter : RecyclerView.Adapter<CheckoutAdapter.CheckoutViewHolder>() {
+class CheckoutAdapter(val sumTotal: (KeranjangProduct) -> Unit) :
+    RecyclerView.Adapter<CheckoutAdapter.CheckoutViewHolder>() {
     inner class CheckoutViewHolder(val binding: CheckoutItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            @SuppressLint("SetTextI18n")
-            fun bind(data:ProductEntity){
-                binding.productName.text = data.productName
-                binding.unit.text = data.unit
-                binding.quantity.addTextChangedListener {
-                    if(!it.isNullOrEmpty()){
-                        binding.subtotal.text = "Rp. ${(Integer.valueOf(it.toString()))*data.price}"
-                    }
-                    else binding.subtotal.text = "Rp. 0"
+        @SuppressLint("SetTextI18n")
+        fun bind(data: KeranjangProduct) {
+            binding.productName.text = data.productEntity.productName
+            binding.unit.text = data.productEntity.unit
+            binding.minus.isEnabled = false
+            binding.quantity.addTextChangedListener {
+                if (!it.isNullOrEmpty()){
+                    binding.minus.isEnabled = it.toString().toInt() >= 2
+                    data.keranjangEntity.quantity = it.toString().toInt()
                 }
-                binding.quantity.setText("1")
+                else{
+                    data.keranjangEntity.quantity = 0
+                    binding.minus.isEnabled = false
+                }
+
+                binding.subtotal.text = "Rp. ${Const.getSubTotal(data)}"
+                sumTotal(data)
             }
+            binding.add.setOnClickListener {
+                data.keranjangEntity.quantity+=1
+                binding.quantity.setText(data.keranjangEntity.quantity.toString())
+            }
+            binding.minus.setOnClickListener {
+                data.keranjangEntity.quantity-=1
+                binding.quantity.setText(data.keranjangEntity.quantity.toString())
+            }
+            binding.quantity.setText(data.keranjangEntity.quantity.toString())
+        }
     }
 
     val differ = AsyncListDiffer(this, itemCallback)
 
     companion object {
-        val itemCallback = object : DiffUtil.ItemCallback<ProductEntity>() {
-            override fun areItemsTheSame(oldItem: ProductEntity, newItem: ProductEntity): Boolean =
-                oldItem.productCode == oldItem.productCode
+        val itemCallback = object : DiffUtil.ItemCallback<KeranjangProduct>() {
+            override fun areItemsTheSame(
+                oldItem: KeranjangProduct,
+                newItem: KeranjangProduct
+            ): Boolean =
+                oldItem.productEntity.productCode == newItem.productEntity.productCode
+
 
             override fun areContentsTheSame(
-                oldItem: ProductEntity,
-                newItem: ProductEntity
+                oldItem: KeranjangProduct,
+                newItem: KeranjangProduct
             ): Boolean = false
 
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CheckoutViewHolder =
         CheckoutViewHolder(
@@ -52,7 +77,7 @@ class CheckoutAdapter : RecyclerView.Adapter<CheckoutAdapter.CheckoutViewHolder>
             )
         )
 
-    override fun onBindViewHolder(holder: CheckoutViewHolder, position: Int){
+    override fun onBindViewHolder(holder: CheckoutViewHolder, position: Int) {
         holder.bind(differ.currentList[position])
     }
 

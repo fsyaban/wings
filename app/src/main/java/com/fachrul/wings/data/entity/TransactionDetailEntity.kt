@@ -11,13 +11,13 @@ data class TransactionDetailEntity(
     @field:ColumnInfo(name = "document_code")
     val documentCode: String,
     @field:ColumnInfo(name = "document_number")
-    val productName: String,
+    val documentNumber: String,
     @field:ColumnInfo(name = "product_code")
     val productCode: String,
     @field:ColumnInfo(name = "price")
     val price:Double,
     @field:ColumnInfo(name = "quantity")
-    val quantity:Double,
+    val quantity:Int,
     @field:ColumnInfo(name = "unit")
     val unit:String,
     @field:ColumnInfo(name = "sub_total")

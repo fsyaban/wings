@@ -1,5 +1,6 @@
 package com.fachrul.wings.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.navigation.fragment.findNavController
 import com.fachrul.wings.data.entity.LoginEntity
 import com.fachrul.wings.data.entity.Result
 import com.fachrul.wings.databinding.FragmentLoginBinding
+import com.fachrul.wings.ui.MainActivity
+import com.fachrul.wings.ui.product.ProductFragment
 import com.fachrul.wings.view_model.LoginViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,6 +31,11 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentLoginBinding.inflate(layoutInflater)
+        if (vm.isLoggedIn) {
+            val intent = Intent(requireContext(),MainActivity::class.java)
+            startActivity(intent)
+            requireActivity().finish()
+        }
         initBinding()
         observeLiveData()
         return binding?.root
@@ -49,6 +57,7 @@ class LoginFragment : Fragment() {
                     )
                 )
             }
+            findNavController().navigate(LoginFragmentDirections.toLoadingFragment())
         }
 
         binding?.register?.setOnClickListener {
@@ -60,13 +69,14 @@ class LoginFragment : Fragment() {
         vm.loginState?.observe(viewLifecycleOwner){
             when(it){
                 is Result.Success -> {
-                    findNavController().navigate(LoginFragmentDirections.loginToProduct())
+                    val intent = Intent(requireContext(),MainActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
                 }
                 is Result.Error->{
                     Toast.makeText(requireContext(),it.error,Toast.LENGTH_SHORT).show()
                 }
             }
         }
-
     }
 }

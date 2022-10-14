@@ -24,12 +24,29 @@
             android:textSize="24sp"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="@+id/image" />
-
+        <ImageView
+            android:id="@+id/minus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_remove_circle_outline_24"
+            app:layout_constraintTop_toTopOf="@+id/quantity"
+            app:layout_constraintBottom_toBottomOf="@+id/quantity"
+            app:layout_constraintEnd_toStartOf="@+id/quantity"/>
+        <ImageView
+            android:id="@+id/add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_add_circle_outline_24"
+            app:layout_constraintTop_toTopOf="@+id/quantity"
+            app:layout_constraintBottom_toBottomOf="@+id/quantity"
+            app:layout_constraintStart_toEndOf="@+id/quantity"/>
         <EditText
             android:id="@+id/quantity"
             android:layout_width="40dp"
             android:layout_height="40dp"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
+            android:inputType="number"
             app:layout_constraintStart_toStartOf="@+id/product_name"
             app:layout_constraintTop_toBottomOf="@+id/product_name" />
 
@@ -37,9 +54,10 @@
             android:id="@+id/unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="40dp"
             android:text="Pcs"
             android:textSize="24sp"
+            app:layout_constraintTop_toTopOf="@+id/quantity"
             app:layout_constraintBottom_toBottomOf="@+id/quantity"
             app:layout_constraintStart_toEndOf="@+id/quantity" />
 
@@ -50,7 +68,7 @@
             android:layout_marginTop="10dp"
             android:text="Sub Total"
             android:textSize="18sp"
-            app:layout_constraintStart_toStartOf="@+id/quantity"
+            app:layout_constraintStart_toStartOf="@+id/product_name"
             app:layout_constraintTop_toBottomOf="@+id/unit" />
 
         <com.google.android.material.textview.MaterialTextView

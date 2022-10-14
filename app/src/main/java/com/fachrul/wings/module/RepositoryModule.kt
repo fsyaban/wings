@@ -1,9 +1,12 @@
 package com.fachrul.wings.module
 
+import com.fachrul.wings.data.auth.AuthDbService
 import com.fachrul.wings.data.dao.LoginDao
 import com.fachrul.wings.data.dao.ProductDao
+import com.fachrul.wings.data.dao.TransactionDao
 import com.fachrul.wings.data.repository.LoginRepository
 import com.fachrul.wings.data.repository.ProductRepository
+import com.fachrul.wings.data.repository.TransactionRepository
 import com.fachrul.wings.utils.AppExecutors
 import dagger.Module
 import dagger.Provides
@@ -17,8 +20,9 @@ class RepositoryModule {
     @Provides
     fun providesLoginRepository(
         loginDao: LoginDao,
-        executors: AppExecutors
-    ) = LoginRepository(loginDao, executors)
+        executors: AppExecutors,
+        authDbService: AuthDbService
+    ) = LoginRepository(loginDao, executors,authDbService)
 
 
     @Provides
@@ -26,4 +30,11 @@ class RepositoryModule {
         productDao: ProductDao,
         executors: AppExecutors
     ) = ProductRepository(productDao, executors)
+
+    @Provides
+    fun providesTransactionRepository(
+        transactionDao: TransactionDao,
+        executors: AppExecutors,
+        authDbService: AuthDbService
+    ) = TransactionRepository(transactionDao, executors,authDbService)
 }
